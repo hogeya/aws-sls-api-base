@@ -18,9 +18,17 @@ print-dev:
 	docker compose down
 .PHONY: docker-remove-dev
 
-
 yarn-install:
 	docker compose up -d
 	docker exec -it aws-sls-api-base_dind_1 yarn install
 	docker compose down
 .PHONY: docker-yarn-install
+
+docker-up:
+	docker compose up -d
+.PHONY: docker-up
+
+docker-ssh:
+	docker compose up -d
+	docker exec -it aws-sls-api-base_dind_1 /bin/bash
+.PHONY: docker-ssh
